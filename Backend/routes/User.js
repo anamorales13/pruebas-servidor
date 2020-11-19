@@ -1,26 +1,12 @@
-const express = require('express');
-const router = express.Router()
+'use strict'
+var express= require('express');
+var UserController= require('../controllers/usuarios');
 
-const User = require('../models/User');
 
-router.get('/', (req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => console.log(err))
-})
+var router = express.Router(); //disponible el router
 
-router.post('/', (req, res) => {
-    const { name, email } = req.body;
-    const newUser = new User({
-        name: name, email: email
-    })
-    newUser.save()
-        .then(() => res.json({
-            message: "Created account successfully"
-        }))
-        .catch(err => res.status(400).json({
-            "error": err,
-            "message": "Error creating account"
-        }))
-})
+
+router.get('/user/:name', UserController.getuserbyname);
+router.post('/save', UserController.save);
+
 module.exports = router 

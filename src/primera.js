@@ -40,12 +40,13 @@ class primera extends Component {
         return (
             <div>
                
-
-                
+               
                     <div>
                         <label>Name: {this.state.usuario.nombre}</label>
                         <label>correo: {this.state.usuario.correo}</label>
                     </div>
+
+                   
                 
 
             </div>
