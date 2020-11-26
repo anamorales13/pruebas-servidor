@@ -1,6 +1,6 @@
 
 
-var Usuario = require('../models/usuarios');
+var Usuario = require('../models/Usuarios');
 var fss = require('fs');
 var path = require('path');
 
@@ -13,7 +13,7 @@ var controllers = {
 
 getuserbyname: (req, res) => {
     var name = req.params.name;
-  
+  console.log("hola");
     Usuario.findOne({ name: { $eq: name } }).exec ((err, users) =>{
         
             if (err) return res.status(500).send({

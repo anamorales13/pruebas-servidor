@@ -7,13 +7,13 @@ y crearemos el servidor*/
 var mongoose = require('mongoose');
 //cargar archivo app
 var app= require('./app');
-var port= 3900;//variable puerto. El que queremos utilizar
+var port= process.env.PORT || 3900;//variable puerto. El que queremos utilizar
 
 
 mongoose.set('useFindAndModify', false); 
 mongoose.Promise= global.Promise;
 
-mongoose.connect('mongodb://localhost:27017/pruebas-servidor',{useNewUrlParser: true})
+mongoose.connect('mongodb+srv://anamorales13:vBac1UreWvszfgNe@plataforma.2cxua.mongodb.net/test?retryWrites=true&w=majority',{ useUnifiedTopology: true, useNewUrlParser: true})
     .then(() => {
         console.log("La conexión a la BD se ha realizado con exito!");
 
@@ -24,9 +24,8 @@ mongoose.connect('mongodb://localhost:27017/pruebas-servidor',{useNewUrlParser: 
         });*/
 
         app.listen(port, ()=> {
-            console.log('servidor corriendo en http://localhost:'+port);
+            console.log('servidor corriendo en' +port);
 
         });
 });
-    
 
