@@ -5,7 +5,7 @@ var AlumnoController= require('../controllers/alumno');
 
 
 var router = express.Router(); //disponible el router
-var md_auth= require('../Middleware/authenticated');
+//var md_auth= require('../Middleware/authenticated');
 
 var multipart= require('connect-multiparty');
 var md_uploadd= multipart({uploadDir: './upload/users'});
@@ -13,7 +13,7 @@ var md_uploaddoc= multipart({uploadDir: './upload/users/documentos'});
 
 
 //RUTAS VALIDAS
-router.get('/pruebas', md_auth.ensureAuth, AlumnoController.pruebas);
+router.get('/pruebas',/* md_auth.ensureAuth*/ AlumnoController.pruebas);
 router.post('/save', AlumnoController.save);
 router.post('/login' , AlumnoController.loginUser);
 router.get('/user/:id', /*md_auth.ensureAuth,*/ AlumnoController.getUser);

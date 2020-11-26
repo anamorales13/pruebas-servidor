@@ -10,28 +10,19 @@ class primera extends Component {
         usuario: {}
     }
 
-    handleChange = input => e => {
-        console.log("cambio")
-        this.setState({ [input]: e.target.value });
-
-
-    }
-
+   
     componentWillMount(){
         this.getuser();
     }
 
-    getuser() {
-        console.log(this.state.nombre);
-        axios.get('http://localhost:3900/api/user/Ana')
-            .then(res => {
+   
+    getuser =()=>{
+        axios.get('http://localhost:3900/apiProfesor/profesor/5f91925147ec0529ec70dbb9')
+            .then(res=>{
                 this.setState({
-                    usuario: res.data.users
-
-                });
-
+                    usuario: res.data.userget
+                })
             })
-
     }
 
 
@@ -43,7 +34,7 @@ class primera extends Component {
                
                     <div>
                         <label>Name: {this.state.usuario.nombre}</label>
-                        <label>correo: {this.state.usuario.correo}</label>
+                        <label>correo: {this.state.usuario.email}</label>
                     </div>
 
                    
